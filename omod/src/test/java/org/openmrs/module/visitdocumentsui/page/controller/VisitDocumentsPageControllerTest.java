@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -30,11 +29,11 @@ import org.openmrs.module.visitdocumentsui.VisitDocumentsConstants;
 import org.openmrs.module.visitdocumentsui.VisitDocumentsContext;
 import org.openmrs.module.webservices.rest.web.ConversionUtil;
 import org.openmrs.module.webservices.rest.web.RestConstants;
-import org.openmrs.ui.framework.BasicUiUtils;
 import org.openmrs.ui.framework.UiUtils;
 import org.openmrs.ui.framework.page.PageModel;
 import org.openmrs.web.test.BaseModuleWebContextSensitiveTest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class VisitDocumentsPageControllerTest extends BaseModuleWebContextSensitiveTest {
 	
@@ -49,7 +48,9 @@ public class VisitDocumentsPageControllerTest extends BaseModuleWebContextSensit
 	
 	private UiSessionContext sessionContext = mock(UiSessionContext.class);
 	
-	private UiUtils ui = new BasicUiUtils();
+	@Autowired
+	@Qualifier("uiUtils")
+	private UiUtils ui;// = new BasicUiUtils();
 	
 	private Location location;
 	
